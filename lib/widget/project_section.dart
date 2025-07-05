@@ -50,7 +50,7 @@ class ProjectsSection extends StatelessWidget {
                 'Task Manager',
                 'Productivity app for managing daily tasks and projects.',
                 ['Flutter', 'SQLite', 'Notifications'],
-                'assets/images/task.jpg',
+                'assets/images/task.png',
               ),
             ],
           ),
@@ -82,11 +82,10 @@ class ProjectsSection extends StatelessWidget {
               height: 120,
               width: double.infinity,
               color: Colors.grey[300],
-              child: const Icon(
-                Icons.image,
-                size: 40,
-                color: Colors.grey,
-              ),
+              child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+            ),
             ),
           ),
           Padding(

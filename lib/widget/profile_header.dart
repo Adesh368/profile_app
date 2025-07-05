@@ -33,7 +33,7 @@ class ProfileHeader extends StatelessWidget {
           
           // Profile Picture
           Positioned(
-            bottom: 50,
+            bottom: 60,
             left: 0,
             right: 0,
             child: Center(
@@ -58,11 +58,13 @@ class ProfileHeader extends StatelessWidget {
                   radius: 56,
                   backgroundImage: const AssetImage('assets/images/profile.jpg'),
                   backgroundColor: Colors.grey[300],
+                  /*
                   child: Icon(
                     Icons.person,
                     size: 60,
                     color: Colors.grey[600],
                   ),
+                  */
                 ),
               ),
             ),
