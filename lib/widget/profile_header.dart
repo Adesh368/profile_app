@@ -1,8 +1,22 @@
 // lib/widgets/profile_header.dart
 import 'package:flutter/material.dart';
 
-class ProfileHeader extends StatelessWidget {
+class ProfileHeader extends StatefulWidget {
   const ProfileHeader({super.key});
+
+  @override
+  State<ProfileHeader> createState() => _ProfileHeaderState();
+}
+
+class _ProfileHeaderState extends State<ProfileHeader> {
+
+  double _avatarSize = 120;
+
+  void _toggleAvatarSize() {
+    setState(() {
+      _avatarSize = _avatarSize == 120 ? 150 : 120;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,34 +51,31 @@ class ProfileHeader extends StatelessWidget {
             left: 0,
             right: 0,
             child: Center(
-              child: Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 4,
-                  ),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 10,
-                      offset: Offset(0, 5),
+              child: GestureDetector(
+                onTap: _toggleAvatarSize,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                  width: _avatarSize,
+                  height: _avatarSize,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 4,
                     ),
-                  ],
-                ),
-                child: CircleAvatar(
-                  radius: 56,
-                  backgroundImage: const AssetImage('assets/images/profile.jpg'),
-                  backgroundColor: Colors.grey[300],
-                  /*
-                  child: Icon(
-                    Icons.person,
-                    size: 60,
-                    color: Colors.grey[600],
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 10,
+                        offset: Offset(0, 5),
+                      ),
+                    ],
                   ),
-                  */
+                  child: CircleAvatar(
+                    backgroundImage: const AssetImage('assets/images/profile.jpg'),
+                    backgroundColor: Colors.grey[300],
+                  ),
                 ),
               ),
             ),

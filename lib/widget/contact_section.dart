@@ -74,6 +74,22 @@ class ContactSection extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: _buildContactButton(
+                        context,
+                        'Download CV',
+                        FontAwesomeIcons.filePdf,
+                        () => _downloadCV(),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -126,6 +142,20 @@ class ContactSection extends StatelessWidget {
     const url = 'https://twitter.com/musaadeshola';
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url));
+    }
+  }
+
+  Future<void> _downloadCV() async {
+    const url =
+        'https://drive.google.com/file/d/1SXlQWTPdOxep9l2obdGy3LEbOqVojoUz/view?usp=sharing'; // Replace with your actual CV link
+    final uri = Uri.parse(url);
+
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri,
+          mode:
+              LaunchMode.externalApplication); // Opens in browser or PDF viewer
+    } else {
+      throw 'Could not launch $url';
     }
   }
 }
